@@ -1,0 +1,1 @@
+{"uuid":"f2e82d91-9f03-40dc-8d7b-f90938951052","name":"Test_Cases.RegPageTest","children":["02e01ff7-76a3-4e17-83bf-ada91faa847c"],"befores":[],"afters":[{"name":"after_Class","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1742077822517,"stop":1742077822703}],"start":1742077817479,"stop":1742077822719}
