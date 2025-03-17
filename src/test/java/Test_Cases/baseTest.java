@@ -11,8 +11,8 @@ public class baseTest {
         @BeforeTest
         public void before_Class(){
 
-            baseDriver.get("https://practicesoftwaretesting.com/");
-            //baseDriver.get("https://practicesoftwaretesting.com/auth/login");
+           // baseDriver.get("https://practicesoftwaretesting.com/");
+            baseDriver.get("https://practicesoftwaretesting.com/auth/login");
         }
         @AfterClass
         public void after_Class(){
