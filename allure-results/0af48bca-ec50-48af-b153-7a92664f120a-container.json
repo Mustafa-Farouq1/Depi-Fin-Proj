@@ -1,0 +1,1 @@
+{"uuid":"0af48bca-ec50-48af-b153-7a92664f120a","name":"Tool_Shop","children":["f5e61e54-66ac-4e73-94c3-3c55bf6aa338"],"befores":[{"name":"before_Class","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1742961760922,"stop":1742961765381}],"afters":[],"start":1742961760907,"stop":1742961765844}
