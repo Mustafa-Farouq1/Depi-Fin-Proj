@@ -1,18 +1,18 @@
 package Test_Cases;
 
 import Pages.LoginPage;
-import Pages.RegsiterPage;
+import Pages.RegisterPage;
 import org.testng.annotations.Test;
 
 public class RegPageTest extends baseTest{
-   // LoginPage lp;
-    RegsiterPage rp;
+   LoginPage lp;
+    RegisterPage rp;
 
     @Test
     public void signNewUser(){
-        //lp = new LoginPage(baseDriver);
-        rp = new RegsiterPage(baseDriver);
-        //lp.clickopenLP();
+        lp = new LoginPage(baseDriver);
+        rp = new RegisterPage(baseDriver);
+        lp.clickOpenLP();
         rp.openRP();
         rp.setRegFirstnameTxtBox("DEPI");
         rp.setRegLastnameTxtBox("Tester");

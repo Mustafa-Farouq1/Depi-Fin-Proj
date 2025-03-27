@@ -2,36 +2,46 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {WebDriver driver;
+import java.time.Duration;
+
+public class LoginPage {
+    WebDriver driver;
+    WebDriverWait wait;
+
     public LoginPage(WebDriver driver) {
-    this.driver = driver;
+        this.driver = driver;
+       this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
     }
-    By openLP = By.xpath("//a[contains(@href,'/auth/login')]");
-    By emailTxtBox = By.id("email");
-    By PasswordBox = By.xpath("//*[@id=\"password\"]");
-    By PasswordVisBox = By.xpath("/html/body/app-root/div/app-login/div/div/div/form/div[2]/app-password-input/div/div/button");
+    By openLP = By.cssSelector("#navbarSupportedContent > ul > li:nth-child(4) > a");
+    By emailTxtBox = By.xpath("//*[@id=\"email\"]");
+    By passwordBox = By.xpath("//*[@id=\"password\"]");
+    By passwordVisBox = By.xpath("/html/body/app-root/div/app-login/div/div/div/form/div[2]/app-password-input/div/div/button");
     By loginButton = By.xpath("/html/body/app-root/div/app-login/div/div/div/form/div[3]/input");
 
-    public void clickopenLP (){
-        driver.findElement(openLP).click();
+    public void clickOpenLP() {
+        WebElement openloginpage = wait.until(ExpectedConditions.elementToBeClickable(openLP));
+        openloginpage.click();
     }
     public void setEmailTxtBox(String email){
-    driver.findElement(emailTxtBox).sendKeys(email);
+        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(emailTxtBox));
+        emailField.sendKeys(email);
     }
+
     public void setPasswordBox(String password){
-        driver.findElement(PasswordBox).sendKeys(password);
+        WebElement passBox = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordBox));
+                passBox.sendKeys(password);
     }
     public void clickPasswordVisBox(){
-        driver.findElement(PasswordVisBox).click();
+        WebElement passVisButton = wait.until(ExpectedConditions.elementToBeClickable(passwordVisBox));
+        passVisButton.click();
     }
-    public void clickloginButton(){
-        driver.findElement(loginButton).click();
+    public void clickLoginButton(){
+        WebElement logBtn = wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        logBtn.click();
     }
-
-
 }
-
-/*
-.sendKeys("welcome01")
- */
