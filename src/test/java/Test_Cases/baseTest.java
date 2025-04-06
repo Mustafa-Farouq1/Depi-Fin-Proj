@@ -14,8 +14,9 @@ public class baseTest {
         @BeforeClass
         public void before_Class(){
             baseDriver  = new ChromeDriver();
-           wait = new WebDriverWait(baseDriver, Duration.ofSeconds(10));
-           baseDriver.get("https://practicesoftwaretesting.com/");
+            baseDriver.manage().window().maximize();
+            wait = new WebDriverWait(baseDriver, Duration.ofSeconds(10));
+            baseDriver.get("https://practicesoftwaretesting.com/");
 
         }
 
