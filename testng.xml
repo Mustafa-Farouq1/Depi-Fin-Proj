@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Dell/IdeaProjects/Tool_Shop/src/test/java/Test_Cases">
+        <classes>
+            <class name="Test_Cases.AccountPageTest">
+                <methods>
+                    <include name="userLogedPage"/>
+                </methods>
+            </class>
+            <class name="Test_Cases.LoginPageTest">
+                <methods>
+                    <include name="loginValidUser"/>
+                    <include name="loginUNVALIDUser"/>
+                    <include name="loginEmptyFields"/>
+                </methods>
+            </class>
+            <class name="Test_Cases.RegPageTest">
+                <methods>
+                    <include name="signNewUser"/>
+                    <include name="signNewUserEmpty"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
