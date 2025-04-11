@@ -5,10 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
 public class LoginPage {
+    LoginPage lp;
+    AccountPage ap;
     WebDriver driver;
     WebDriverWait wait;
 
@@ -62,6 +65,7 @@ public class LoginPage {
         WebElement pBoxEM = wait.until(ExpectedConditions.visibilityOfElementLocated(pBoxErrorMessage));
         return pBoxEM.getText();
     }
+
     public String getInValidErrorMessage() {
         WebElement inVEM = wait.until(ExpectedConditions.visibilityOfElementLocated(inValidErrorMessage));
         return inVEM.getText();
@@ -74,6 +78,7 @@ public class LoginPage {
             return false;
         }
     }
+
     public boolean isPBoxErrorMessageDisplayed() {
         try {
             return driver.findElement(pBoxErrorMessage).isDisplayed();
@@ -81,6 +86,7 @@ public class LoginPage {
             return false;
         }
     }
+
     public boolean isInValidErrorMessageDisplayed() {
         try {
             return driver.findElement(inValidErrorMessage).isDisplayed();
@@ -88,7 +94,41 @@ public class LoginPage {
             return false;
         }
     }
+
     public boolean isAnyErrorMessageDisplayed() {
         return isEBoxErrorMessageDisplayed() || isPBoxErrorMessageDisplayed() || isInValidErrorMessageDisplayed();
     }
+
+    public void login_ea(String email, String pass) {
+        clickopenLP();
+        setEmailTxtBox(email);
+        setPasswordBox(pass);
+        clickPasswordVisBox();
+        clickloginButton();
+
+        try {
+            ap = new AccountPage(driver); // Initialize ap
+            ap.seeFavoriteButton();
+        } catch (Exception e) {
+            if (isInValidErrorMessageDisplayed()) {
+                String actualInvalidError = getInValidErrorMessage();
+                String expectedInvalidError = "Invalid email or password"; // Adjust this if needed
+                Assert.assertEquals(actualInvalidError.trim(), expectedInvalidError,
+                        "Invalid login error message does not match expected");
+            } else if (isEBoxErrorMessageDisplayed() || isPBoxErrorMessageDisplayed()) {
+                String actualEBoxError = getEBoxErrorMessage();
+                String actualPBoxError = getPBoxErrorMessage();
+                String expectedEBoxError = "Email is required";
+                String expectedPBoxError = "Password is required";
+                Assert.assertEquals(actualEBoxError.trim(), expectedEBoxError,
+                        "Email error message text does not match expected");
+                Assert.assertEquals(actualPBoxError.trim(), expectedPBoxError,
+                        "Password error message text does not match expected");
+            } else {
+                Assert.fail("No valid or expected error message was displayed.");
+            }
+        }
+    }
+
+
 }

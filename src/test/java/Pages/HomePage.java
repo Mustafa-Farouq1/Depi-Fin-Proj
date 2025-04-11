@@ -12,6 +12,7 @@ import java.util.List;
 
 public class HomePage {
     WebDriver driver;
+    WebDriverWait wait;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -654,7 +655,7 @@ public class HomePage {
             System.out.println("✅ Assertion Passed: Text '" + expectedWord + "' is as expected.\n");
         } catch (AssertionError e) {
             System.err.println("❌ Assertion Failed: " + e.getMessage());
-            throw e; // Re-throw to fail the test
+            throw e;
         }
     }
 

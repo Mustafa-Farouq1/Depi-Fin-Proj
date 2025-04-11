@@ -5,52 +5,29 @@ import Pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginPageTest extends baseTest{
+public class LoginPageTest extends baseTest {
     LoginPage lp;
-    AccountPage ap;
 
-    public void login_ea(String email,String pass )
-    {
+
+    @Test
+    public void login_ValidUser() {
         lp = new LoginPage(baseDriver);
-        ap = new AccountPage(baseDriver);
-        lp.clickopenLP();
-        lp.setEmailTxtBox(email);
-        lp.setPasswordBox(pass);
-        lp.clickPasswordVisBox();
-        lp.clickloginButton();
+        lp.login_ea("customer@practicesoftwaretesting.com", "welcome01");
     }
 
     @Test
-    public void login_ValidUser(){
-        login_ea("customer@practicesoftwaretesting.com","welcome01");
-        ap.seeFavoriteButton();
-        Assert.assertFalse(lp.isAnyErrorMessageDisplayed(),
-                "No error messages should be displayed for valid login");
-    }
-    @Test
-    public void login_InValidUser(){
-        login_ea("test@depi.com", "012345678910");
-        if (lp.isInValidErrorMessageDisplayed()) {
-            String actualInvalidError = lp.getInValidErrorMessage();
-            String expectedInvalidError = "Invalid email or password"; // Adjust this
-            Assert.assertEquals(actualInvalidError.trim(), expectedInvalidError,
-                    "Email error message text does not match expected");
-        }
-    }
-    @Test
-    public void login_EmptyFields(){
-        login_ea("", "");
-        if (lp.isEBoxErrorMessageDisplayed() || lp.isPBoxErrorMessageDisplayed()) {
-            String actualEBoxError = lp.getEBoxErrorMessage();
-            String actualPBoxError = lp.getPBoxErrorMessage();
-            String expectedEBoxError= "Email is required";
-            String expectedPBoxError= "Password is required";
-            Assert.assertEquals(actualEBoxError.trim(), expectedEBoxError,
-                    "Email error message text does not match expected");
-            Assert.assertEquals(actualPBoxError.trim(), expectedPBoxError,
-                    "Password error message text does not match expected");
-        }
+    public void login_InValidUser() {
+        lp = new LoginPage(baseDriver);
+        lp.login_ea("test@depi.com", "012345678910");
     }
 
 
+    @Test
+    public void login_EmptyFields() {
+        lp = new LoginPage(baseDriver);
+        lp.login_ea("", "");
+    }
 }
+
+
+

@@ -6,24 +6,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class baseTest {
-        WebDriver baseDriver ;
-        WebDriverWait wait ;
+    WebDriver baseDriver;
+    WebDriverWait wait;
 
-        @BeforeClass
-        public void before_Class(){
-            baseDriver  = new ChromeDriver();
-            baseDriver.manage().window().maximize();
-            wait = new WebDriverWait(baseDriver, Duration.ofSeconds(10));
-            baseDriver.get("https://practicesoftwaretesting.com/");
-
-        }
-
-        @AfterClass
-        public void after_Class() {
-                baseDriver.quit();
-
-        }
+    @BeforeMethod
+    public void beforeClass() {
+        baseDriver = new ChromeDriver();
+        baseDriver.manage().window().maximize();
+        baseDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        baseDriver.get("https://practicesoftwaretesting.com/");
     }
+
+    @AfterMethod
+    public void afterMethod() {
+
+        baseDriver.quit();
+    }
+
+}
 

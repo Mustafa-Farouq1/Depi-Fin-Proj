@@ -3,12 +3,10 @@ package Test_Cases;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import pages.HomePage;
+import Pages.HomePage;
 
-import java.time.Duration;
 
-public class HomePage_TestCases extends BaseTest {
-    WebDriverWait wait = new WebDriverWait(baseDriver, Duration.ofSeconds(40));
+public class HomePage_TestCases extends baseTest {
     HomePage hp;
 
     @Test(priority = 1)
