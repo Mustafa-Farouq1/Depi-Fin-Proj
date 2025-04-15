@@ -9,23 +9,34 @@ public class RegPageTest extends baseTest{
     RegisterPage rp;
 
     @Test
-    public void signNewUser(){
+    public void signNewUser() {
         lp = new LoginPage(baseDriver);
         rp = new RegisterPage(baseDriver);
-        lp.clickopenLP();
-        rp.openRP();
-        rp.setRegFirstnameTxtBox("DEPI");
-        rp.setRegLastnameTxtBox("Tester");
-        rp.setRegDateOfBirth("01011990");
-        rp.setRegAddress("Shoubra");
-        rp.setRegPostalCode("123456");
-        rp.setRegCity("Cairo");
-        rp.setRegState("Cairo");
-        rp.setRegCountry();
-        rp.setRegPhoneNum("012345678910");
-        rp.setRegEmail("tester@depi.com");
-        rp.setRegPasswordBox("0123456789_Td");
-        rp.clickRegVisPass();
-        rp.clickRegButton();
+        rp.regUserData("Depi", "Tester", "01011990", "Shoubra", "123456",
+                "Cairo", "Cairo", "012345678910", "test@depi.com", "0123456789_Td");
     }
+
+    @Test
+    public void signWithNullData(){
+        lp = new LoginPage(baseDriver);
+        rp = new RegisterPage(baseDriver);
+        rp.regNullMethod();
+    }
+
+    @Test
+    public void sign_NewUser(){
+        lp = new LoginPage(baseDriver);
+        rp = new RegisterPage(baseDriver);
+        rp.regUserData("Depi", "Tester", "01011990", "Shoubra", "123456",
+                "Cairo", "Cairo", "Mmnmnmn", "test@depi.com", "0123");
+    }
+
+    @Test
+    public void sign_NewWithWrongUserFormat(){
+        lp = new LoginPage(baseDriver);
+        rp = new RegisterPage(baseDriver);
+        rp.regUserData("Depi", "Tester", "01011990", "Shoubra", "123456",
+                "Cairo", "Cairo", "012345678910", "test@depi,com", "0123456789_td");
+    }
+
 }

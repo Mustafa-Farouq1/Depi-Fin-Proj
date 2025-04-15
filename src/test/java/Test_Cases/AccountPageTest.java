@@ -2,7 +2,6 @@ package Test_Cases;
 
 import Pages.AccountPage;
 import Pages.LoginPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 public class AccountPageTest extends baseTest {
@@ -13,31 +12,29 @@ public class AccountPageTest extends baseTest {
     public void userLogedPage(){
         lp = new LoginPage(baseDriver);
         ap = new AccountPage(baseDriver);
-        lp.clickopenLP();
-        lp.setEmailTxtBox("customer@practicesoftwaretesting.com");
-        lp.setPasswordBox("welcome01");
-        lp.clickPasswordVisBox();
-        lp.clickloginButton();
+        lp.login_ea("customer@practicesoftwaretesting.com","welcome01");
         ap.setFavoriteButton();
-        baseDriver.navigate().back();
     }
     @Test
     public void userProfilePage(){
-       ap = new AccountPage(baseDriver);
+        lp = new LoginPage(baseDriver);
+        ap = new AccountPage(baseDriver);
+        lp.login_ea("customer@practicesoftwaretesting.com","welcome01");
         ap.setProfileButton();
-        baseDriver.navigate().back();
     }
     @Test
     public void userMessagesPage(){
+        lp = new LoginPage(baseDriver);
         ap = new AccountPage(baseDriver);
+        lp.login_ea("customer@practicesoftwaretesting.com","welcome01");
         ap.setMessagesButton();
-        baseDriver.navigate().back();
     }
     @Test
     public void userInvoicePage() {
+        lp = new LoginPage(baseDriver);
         ap = new AccountPage(baseDriver);
+        lp.login_ea("customer@practicesoftwaretesting.com","welcome01");
         ap.setInvoiceButton();
-        baseDriver.navigate().back();
     }
 }
 

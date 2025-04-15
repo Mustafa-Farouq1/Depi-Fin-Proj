@@ -2,15 +2,11 @@ package Test_Cases;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
-
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class baseTest {
+    public class baseTest {
     WebDriver baseDriver;
-    WebDriverWait wait;
 
     @BeforeMethod
     public void beforeClass() {
@@ -22,9 +18,7 @@ public class baseTest {
 
     @AfterMethod
     public void afterMethod() {
-
         baseDriver.quit();
     }
-
-}
+    }
 

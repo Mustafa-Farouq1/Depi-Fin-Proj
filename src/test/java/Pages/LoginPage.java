@@ -10,14 +10,13 @@ import org.testng.Assert;
 import java.time.Duration;
 
 public class LoginPage {
-    LoginPage lp;
     AccountPage ap;
     WebDriver driver;
     WebDriverWait wait;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     By openLP = By.xpath("//a[contains(@href,'/auth/login')]");
@@ -95,8 +94,38 @@ public class LoginPage {
         }
     }
 
-    public boolean isAnyErrorMessageDisplayed() {
-        return isEBoxErrorMessageDisplayed() || isPBoxErrorMessageDisplayed() || isInValidErrorMessageDisplayed();
+    public void loginAssertion(){
+        try {
+            ap = new AccountPage(driver);
+            ap.seeFavoriteButton();
+        } catch (Exception e) {
+            if (isInValidErrorMessageDisplayed()) {
+                String actualInvalidError = getInValidErrorMessage();
+                String expectedInvalidError = "Invalid email or password";
+                Assert.assertEquals(actualInvalidError.trim(), expectedInvalidError,
+                        "Invalid login error message does not match expected");
+            }
+            else if (isEBoxErrorMessageDisplayed() || isPBoxErrorMessageDisplayed()) {
+                if (isEBoxErrorMessageDisplayed()) {
+                    String actualEBoxError = getEBoxErrorMessage().trim();
+                    boolean validEmailError = actualEBoxError.equals("Email is required") ||
+                            actualEBoxError.equals("Email format is invalid");
+
+                    Assert.assertTrue(validEmailError,
+                            "Email error message text does not match any expected value. Found: " + actualEBoxError);
+                }
+
+                if (isPBoxErrorMessageDisplayed()) {
+                    String actualPBoxError = getPBoxErrorMessage().trim();
+                    String expectedPBoxError = "Password is required";
+                    Assert.assertEquals(actualPBoxError, expectedPBoxError,
+                            "Password error message text does not match expected.");
+                }
+
+            } else {
+                Assert.fail("No valid or expected error message was displayed.");
+            }
+        }
     }
 
     public void login_ea(String email, String pass) {
@@ -105,29 +134,7 @@ public class LoginPage {
         setPasswordBox(pass);
         clickPasswordVisBox();
         clickloginButton();
-
-        try {
-            ap = new AccountPage(driver); // Initialize ap
-            ap.seeFavoriteButton();
-        } catch (Exception e) {
-            if (isInValidErrorMessageDisplayed()) {
-                String actualInvalidError = getInValidErrorMessage();
-                String expectedInvalidError = "Invalid email or password"; // Adjust this if needed
-                Assert.assertEquals(actualInvalidError.trim(), expectedInvalidError,
-                        "Invalid login error message does not match expected");
-            } else if (isEBoxErrorMessageDisplayed() || isPBoxErrorMessageDisplayed()) {
-                String actualEBoxError = getEBoxErrorMessage();
-                String actualPBoxError = getPBoxErrorMessage();
-                String expectedEBoxError = "Email is required";
-                String expectedPBoxError = "Password is required";
-                Assert.assertEquals(actualEBoxError.trim(), expectedEBoxError,
-                        "Email error message text does not match expected");
-                Assert.assertEquals(actualPBoxError.trim(), expectedPBoxError,
-                        "Password error message text does not match expected");
-            } else {
-                Assert.fail("No valid or expected error message was displayed.");
-            }
-        }
+        loginAssertion();
     }
 
 

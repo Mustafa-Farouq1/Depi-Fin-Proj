@@ -1,8 +1,7 @@
 package Test_Cases;
 
-import Pages.AccountPage;
+
 import Pages.LoginPage;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends baseTest {
@@ -27,6 +26,19 @@ public class LoginPageTest extends baseTest {
         lp = new LoginPage(baseDriver);
         lp.login_ea("", "");
     }
+
+    @Test
+    public void login_WrongEmailFormat() {
+        lp = new LoginPage(baseDriver);
+        lp.login_ea("test@depi,com", "012345678910");
+    }
+
+    @Test
+    public void login_ShortPassword() {
+        lp = new LoginPage(baseDriver);
+        lp.login_ea("tcustomer@practicesoftwaretesting.com", "welcome");
+    }
+
 }
 
 

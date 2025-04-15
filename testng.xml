@@ -1,26 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="C:/Users/Dell/IdeaProjects/Tool_Shop/src/test/java/Test_Cases">
+    <test verbose="2" preserve-order="true" name="C:/Users/Dell/OneDrive/Documents/GitHub/Depi-Fin-Proj/src/test/java/Test_Cases">
         <classes>
+                <class name="Test_Cases.HomePage_TestCases">
+                    <methods>
+                        <include name="NavBarNavigationTest"/>
+                        <include name="CategoryNavBarTest"/>
+                        <include name="LanguageNavBarTest"/>
+                        <include name="SortTest"/>
+                        <include name="PriceRangeTest"/>
+                        <include name="CategoryFilterTest"/>
+                        <include name="BrandFilterTest"/>
+                        <include name="SearchTest"/>
+                        <include name="NavigateThroughPages"/>
+                    </methods>
+                </class>
+                <class name="Test_Cases.LoginPageTest">
+                    <methods>
+                        <include name="login_ValidUser"/>
+                        <include name="login_InValidUser"/>
+                        <include name="login_EmptyFields"/>
+                    </methods>
+                </class>
+                <class name="Test_Cases.RegPageTest">
+                    <methods>
+                        <include name="signNewUser"/>
+                        <include name="signWithNullData"/>
+                        <include name="sign_NewUser"/>
+                        <include name="sign_NewWithWrongUserFormat"/>
+                    </methods>
+                </class>
             <class name="Test_Cases.AccountPageTest">
                 <methods>
                     <include name="userLogedPage"/>
+                    <include name="userProfilePage"/>
+                    <include name="userMessagesPage"/>
+                    <include name="userInvoicePage"/>
                 </methods>
             </class>
-            <class name="Test_Cases.LoginPageTest">
+                <class name="Test_Cases.favPageTest">
+                    <methods>
+                        <include name="openFavPage"/>
+                        <include name="checkFavItems"/>
+                        <include name="delFavItems"/>
+                    </methods>
+                </class>
+            <class name="Test_Cases.InvoicePageTest">
                 <methods>
-                    <include name="loginValidUser"/>
-                    <include name="loginUNVALIDUser"/>
-                    <include name="loginEmptyFields"/>
+                    <include name="userInvoicePage"/>
                 </methods>
             </class>
-            <class name="Test_Cases.RegPageTest">
-                <methods>
-                    <include name="signNewUser"/>
-                    <include name="signNewUserEmpty"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-</suite>
+            </classes>
+        </test>
+    </suite>

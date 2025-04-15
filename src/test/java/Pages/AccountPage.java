@@ -14,7 +14,7 @@ public class AccountPage {
 
     public AccountPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
     By favoriteButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(1)");

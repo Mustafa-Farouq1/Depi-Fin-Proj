@@ -12,7 +12,6 @@ import java.util.List;
 
 public class HomePage {
     WebDriver driver;
-    WebDriverWait wait;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -485,7 +484,6 @@ public class HomePage {
 
     public void NavBar(WebElement get_element, String expectedURL, String elementName) {
         try {
-            // Wait until the element is clickable
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             WebElement clickableElement = wait.until(
                     ExpectedConditions.elementToBeClickable(get_element)
@@ -514,9 +512,8 @@ public class HomePage {
             ));
             productTitles = driver.findElements(ProductTitlePath);
         } catch (TimeoutException e) {
-            // Nothing appeared — means zero results as expected
             System.out.println("❌ No products found as expected for '" + searchWord + "'");
-            return; // No need to continue
+            return;
         }
 
         for (WebElement titleElement : productTitles) {
@@ -531,15 +528,11 @@ public class HomePage {
     }
 
     public void filterByCategory(String categoryName, WebElement checkboxLocator) {
-        // Click the checkbox (to filter by category)
         checkboxLocator.click();
-        // Wait until products container is updated
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(filter_completedPath));
-        // Get product titles
         List<WebElement> productTitles = driver.findElements(ProductTitlePath);
 
-        // Verify results
         if (productTitles.isEmpty()) {
             System.out.println("❌ No products found for category: " + categoryName);
         } else {
@@ -554,12 +547,10 @@ public class HomePage {
     }
 
     public void searchPriceRange(double min, double max) {
-        // Wait until the price elements are present
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.invisibilityOfElementLocated(
                         SliderContainer));
 
-        // Get all price elements with correct attribute
         List<WebElement> productPrices = driver.findElements(
                 ProductPrice);
 
@@ -643,7 +634,6 @@ public class HomePage {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Wait until the element has the expected text
         Boolean textAppeared = wait.until(ExpectedConditions.textToBe(byCategoryHeaderLocator, expectedWord));
 
         WebElement categoryHeader = driver.findElement(byCategoryHeaderLocator);
@@ -676,11 +666,9 @@ public class HomePage {
             String priceText = price.getText().replace("$", "").trim();
             prices.add(Double.parseDouble(priceText));
         }
-        // Print all prices and check if they are sorted in descending order
         for (int i = 0; i < prices.size(); i++) {
             System.out.println("Price: $" + prices.get(i));
 
-            // Check the sorting order
             if (i > 0) {
                 if (sortingOrder.equals("low") && prices.get(i) < prices.get(i - 1)) {
                     System.out.println("❌ Price is not in ascending order at index " + i +
@@ -698,24 +686,19 @@ public class HomePage {
     }
 
     public void checkNameSorted(String sortingOrder) {
-        // Wait for the loading element to disappear
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 sorting_completedPath));
 
-        // Get all product names
         List<WebElement> productNames = driver.findElements(ProductTitlePath);
 
-        // Extract names into a list
         List<String> names = new ArrayList<>();
         for (WebElement name : productNames) {
             names.add(name.getText().trim());
         }
-        // Print all names and check if they are sorted based on the selected order
         for (int i = 0; i < names.size(); i++) {
             System.out.println("Product Name: " + names.get(i));
 
-            // Check the sorting order
             if (i > 0) {
                 if (sortingOrder.equals("asc") && names.get(i).compareTo(names.get(i - 1)) < 0) {
                     System.out.println("❌ Product name is not in ascending order at index " + i +
@@ -737,7 +720,6 @@ public class HomePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(filter_completedPath));
 
         try {
-            // Attempt to click the first product
             driver.findElement(firstProduct).click();
         } catch (NoSuchElementException e) {
             System.out.println("❌ verifyFirstProductBrandIs FAILED: first product for " + expectedBrand + " not found!" + "\n");
