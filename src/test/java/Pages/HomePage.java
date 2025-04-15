@@ -559,7 +559,7 @@ public class HomePage {
         } else {
             int count = 0;
             for (WebElement priceElement : productPrices) {
-                String priceText = priceElement.getText().trim();  // e.g., "$89.55"
+                String priceText = priceElement.getText().trim();
                 if (priceText.isEmpty()) continue;
 
                 try {
@@ -600,7 +600,6 @@ public class HomePage {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(
                 SliderContainer));
 
-        // Get all price elements with correct attribute
         List<WebElement> productPrices = driver.findElements(ProductPrice);
 
         if (productPrices.isEmpty()) {
@@ -660,8 +659,7 @@ public class HomePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 sorting_completedPath));
 
-        // Get all price elements with correct attribute
-        List<WebElement> productPrices = driver.findElements(ProductPrice);// Print each product price
+        List<WebElement> productPrices = driver.findElements(ProductPrice);
         for (WebElement price : productPrices) {
             String priceText = price.getText().replace("$", "").trim();
             prices.add(Double.parseDouble(priceText));
