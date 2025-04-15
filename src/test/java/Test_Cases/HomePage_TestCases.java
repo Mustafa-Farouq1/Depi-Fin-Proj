@@ -1,9 +1,16 @@
 package Test_Cases;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import Pages.HomePage;
+
+import java.time.Duration;
 
 
 public class HomePage_TestCases extends baseTest {
@@ -193,4 +200,19 @@ public class HomePage_TestCases extends baseTest {
         hp.Click_BackBTN();
         hp.Click_FrontBTN();
     }
+
+    public void verifyFirst() {
+        WebDriverWait wait = new WebDriverWait(baseDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/div/app-overview/div[3]/div[2]/div[1]")));
+        baseDriver.findElement(By.xpath("/html/body/app-root/div/app-overview/div[3]/div[2]/div[1]/a[1]")).click();
+
+    }
+
+    @Test
+    public void Navigate() {
+        hp = new HomePage(baseDriver);
+
+        verifyFirst();
+    }
+
 }

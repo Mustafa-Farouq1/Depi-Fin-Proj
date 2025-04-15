@@ -3,9 +3,10 @@ package Test_Cases;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+
 import java.util.concurrent.TimeUnit;
 
-    public class baseTest {
+public class baseTest {
     WebDriver baseDriver;
 
     @BeforeMethod
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
     @AfterMethod
     public void afterMethod() {
-        baseDriver.quit();
+//        baseDriver.quit();
     }
-    }
+}
 
