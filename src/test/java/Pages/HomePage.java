@@ -736,5 +736,10 @@ public class HomePage {
         }
         driver.navigate().back();
     }
+    public void verifyFirst() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/div/app-overview/div[3]/div[2]/div[1]")));
+        driver.findElement(By.xpath("/html/body/app-root/div/app-overview/div[3]/div[2]/div[1]/a[1]")).click();
+    }
 
 }
