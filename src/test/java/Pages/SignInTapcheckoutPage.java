@@ -24,8 +24,4 @@ public class SignInTapcheckoutPage {
     }
 
 
-    public String validateErrorMSG() {
-        return driver.findElement(ErrorMSG).getText();
-
-    }
 }

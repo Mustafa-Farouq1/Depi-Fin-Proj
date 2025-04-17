@@ -3,12 +3,16 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 /// /-------04---------
 
 
 public class PaymentPage {
     WebDriver driver;
+    WebDriverWait wait;
 
     public PaymentPage(WebDriver driver) {
         this.driver = driver;
@@ -30,23 +34,27 @@ public class PaymentPage {
     private By cvv = By.id("cvv");
     private By cardHolderName = By.id("card_holder_name");
     By Sort = By.cssSelector("[data-test='payment-method']");
-
-
+    By Nav_Sort = By.cssSelector("[data-test='nav-my-invoices']");
 //---Option4----BuyNowPayLater\
 // //   Option1-Option2-Option3-Option4
 
 
-    //---Option5----BuyNowPayLater\
+    //---Option5----Gift Card\
     private By giftCardNumber = By.id("gift_card_number");
     private By validationCode = By.id("validation_code");
 
     //Confirm Button
     private By confirmBTN =
             By.xpath("/html/body/app-root/div/app-checkout/aw-wizard/div/aw-wizard-completion-step/app-payment/div/div/div/div");
+    private By validationMessage = By.cssSelector("[data-test='payment-success-message']");
 
     public WebElement get_Sort() {
         return driver.findElement(Sort);
     }
+
+//    public WebElement Nav_Sort() {
+//        return driver.findElement(Nav_Sort);
+//    }
 
     /// /Actions
 //---Option1----BankTransfer\
@@ -95,7 +103,7 @@ public class PaymentPage {
 
 
     //---Option5----BuyNowPayLater\
-    public void GiftCardNumber(String GCNumber, By nu) {
+    public void GiftCardNumber(String GCNumber) {
         driver.findElement(giftCardNumber).clear();
         driver.findElement(giftCardNumber).sendKeys(GCNumber);
     }
@@ -107,7 +115,14 @@ public class PaymentPage {
 
     //----ConfirmButton
     public void ConfirmBTN() {
+
         driver.findElement(confirmBTN).click();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    public String getSuccessMessage() {
+        return driver.findElement(validationMessage).getText();
+
     }
 
 }
