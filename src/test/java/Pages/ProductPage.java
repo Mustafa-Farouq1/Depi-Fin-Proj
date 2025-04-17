@@ -11,6 +11,8 @@ import java.time.Duration;
 public class ProductPage {
     WebDriver driver;
     WebDriverWait wait;
+    LoginPage lp;
+    HomePage hp;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -34,4 +36,19 @@ public class ProductPage {
         String buttonClass = addToFavoritesButton.getAttribute("class");
         Assert.assertTrue(buttonClass.contains("favorited"), "Item was not added to favorites successfully");
     }
+
+    public void addProductToCart() {
+        hp = new HomePage(driver);
+        hp.Click_Home_btn();
+        hp.verifyFirst();
+        testAddToCart();
+    }
+
+    public void addProductToFavorites() {
+        hp = new HomePage(driver);
+        hp.Click_Home_btn();
+        hp.verifyFirst();
+        testAddToFavorites();
+    }
+
 }

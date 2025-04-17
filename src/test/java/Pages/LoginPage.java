@@ -19,14 +19,14 @@ public class LoginPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
-    By openLP = By.xpath("//a[contains(@href,'/auth/login')]");
-    By emailTxtBox = By.id("email");
-    By PasswordBox = By.xpath("//*[@id=\"password\"]");
-    By PasswordVisBox = By.xpath("/html/body/app-root/div/app-login/div/div/div/form/div[2]/app-password-input/div/div/button");
-    By loginButton = By.xpath("/html/body/app-root/div/app-login/div/div/div/form/div[3]/input");
-    By eBoxErrorMessage = By.xpath("//*[@id=\"email-error\"]");
-    By pBoxErrorMessage = By.xpath("//*[@id=\"password-error\"]");
-    By inValidErrorMessage = By.xpath("/html/body/app-root/div/app-login/div/div/div/div[4]");
+    private By openLP = By.xpath("//a[contains(@href,'/auth/login')]");
+    private By emailTxtBox = By.id("email");
+    private By PasswordBox = By.xpath("//*[@id=\"password\"]");
+    private By PasswordVisBox = By.xpath("/html/body/app-root/div/app-login/div/div/div/form/div[2]/app-password-input/div/div/button");
+    private By loginButton = By.xpath("/html/body/app-root/div/app-login/div/div/div/form/div[3]/input");
+    private By eBoxErrorMessage = By.xpath("//*[@id=\"email-error\"]");
+    private By pBoxErrorMessage = By.xpath("//*[@id=\"password-error\"]");
+    private By inValidErrorMessage = By.xpath("/html/body/app-root/div/app-login/div/div/div/div[4]");
 
     public void clickopenLP() {
         WebElement oLP = wait.until(ExpectedConditions.visibilityOfElementLocated(openLP));

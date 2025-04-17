@@ -17,10 +17,10 @@ public class AccountPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
-    By favoriteButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(1)");
-    By profileButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(2)");
-    By invoiceButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(3)");
-    By messagesButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(4)");
+    private By favoriteButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(1)");
+    private By profileButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(2)");
+    private By invoiceButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(3)");
+    private By messagesButton = By.cssSelector("body > app-root > div > app-overview > div > a:nth-child(4)");
 
 
     public void seeFavoriteButton(){
