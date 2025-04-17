@@ -18,12 +18,12 @@ public class favoritePage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
-    By delete1stBTN = By.xpath("/html/body/app-root/div/app-favorites/div/div[1]/div/div[3]/button");
-    By delete2ndBTN = By.xpath("/html/body/app-root/div/app-favorites/div/div[2]/div/div[3]/button");
-    By delete3rdBTN = By.xpath("/html/body/app-root/div/app-favorites/div/div[3]/div/div[3]/button");
-    By itemCard1 = By.xpath("/html/body/app-root/div/app-favorites/div/div[1]/div");
-    By itemCard2 = By.xpath("/html/body/app-root/div/app-favorites/div/div[2]/div");
-    By itemCard3 = By.xpath("/html/body/app-root/div/app-favorites/div/div[3]/div");
+    private By delete1stBTN = By.xpath("/html/body/app-root/div/app-favorites/div/div[1]/div/div[3]/button");
+    private By delete2ndBTN = By.xpath("/html/body/app-root/div/app-favorites/div/div[2]/div/div[3]/button");
+    private By delete3rdBTN = By.xpath("/html/body/app-root/div/app-favorites/div/div[3]/div/div[3]/button");
+    private By itemCard1 = By.xpath("/html/body/app-root/div/app-favorites/div/div[1]/div");
+    private By itemCard2 = By.xpath("/html/body/app-root/div/app-favorites/div/div[2]/div");
+    private By itemCard3 = By.xpath("/html/body/app-root/div/app-favorites/div/div[3]/div");
 
     public void seeDel1stBTN() {
         WebElement delBTN = wait.until(ExpectedConditions.visibilityOfElementLocated(delete1stBTN));

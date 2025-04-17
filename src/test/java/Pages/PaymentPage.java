@@ -117,7 +117,6 @@ public class PaymentPage {
     public void ConfirmBTN() {
 
         driver.findElement(confirmBTN).click();
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public String getSuccessMessage() {
