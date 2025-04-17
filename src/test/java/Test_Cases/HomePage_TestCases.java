@@ -201,7 +201,4 @@ public class HomePage_TestCases extends baseTest {
         hp.Click_FrontBTN();
     }
 
-
-
-
 }
