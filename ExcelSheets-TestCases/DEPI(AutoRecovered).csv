@@ -1,0 +1,78 @@
+Test ID,Section,Test Case Name,Steps,Expected Result ,Actual Result,Priority,Status
+1,Logo,Verify logo Visibility,"1. Open the website.
+2. Observe the logo at the top.",The logo should be visible and correctly displayed.,The logo is displayed with correct size and quality.,Medium,Pass
+2,Logo,Verify logo click functionality,"1. Open the website.
+2. Click on the logo",Clicking the logo should redirect the user to Home page,Clicking the logo  redirect the user to Home page,Medium,Pass
+3,Nav,Verify Home Button Click Functionality,"1. Open the website.
+2. Click on Home button",Clicking the Home button should redirect the user to Home page,Clicking the Home button successfully redirected the user to the homepage.,Medium,Pass
+,Nav,Verify Sign in Button Click Functionality,"1. Open the website.
+2. Click on Sign in button",Clicking the Sign in button should redirect the user to Sign in page,Clicking the Sign in button successfully redirected the user to the Sign in.,Medium,Pass
+,Nav,Verify Contact Button Click Functionality,"1. Open the website.
+2. Click on Contact button",Clicking the Contact button should redirect the user to Contact page,Clicking the Contact button successfully redirected the user to the Contact.,Medium,Pass
+4,Nav,Verify Category Drop down Expanded Functionality,"1. Open the website.
+2. Click on Category Drop down","The Drop down should expand and display the options (Hand Tools, Power Tools, other, Special Tools, rentals)",the drop down expanded and display the options,High,Pass
+5,Nav,Verify Category Drop down Collapse  Functionality,"1. Open the website.
+2. Click on Category Drop down",The Drop down should Collapse ,the drop down Collapse  ,High,Pass
+6,Nav,"Verify ""Hand Tools"" Option Click Functionality","1. Open the website.
+2. Click on Category Drop down
+3. Click on the ""Hand Tools"" option.","The product listing page filters to display only products categorized as ""Hand Tools.""","The product listing page correctly filtered and displayed only products categorized as ""Hand Tools.""",High,Pass
+7,Nav,"Verify ""Power Tools"" Option Click Functionality","1. Open the website.
+2. Click on Category Drop down
+3. Click on the ""Power Tools"" option.","The product listing page filters to display only products categorized as ""Power Tools.""","The product listing page correctly filtered and displayed only products categorized as ""Power Tools""",High,Pass
+8,Nav,"Verify ""Other"" Option Click Functionality","1. Open the website.
+2. Click on Category Drop down
+3. Click on the ""Other"" option.","The product listing page filters to display only products categorized as ""Other""","The product listing page correctly filtered and displayed only products categorized as ""Other""",High,Pass
+9,Nav,"Verify ""Special Tools"" Option Click Functionality","1. Open the website.
+2. Click on Category Drop down
+3. Click on the ""Special Tools"" option.","The product listing page filters to display only products categorized as ""Special Tools""","The product listing page correctly filtered and displayed only products categorized as ""Special Tools""",High,Pass
+10,Nav,"Verify ""Rentals"" Option Click Functionality","1. Open the website.
+2. Click on Category Drop down
+3. Click on the ""Rentals"" option.","Clicking the ""Rentals"" option should redirect the user to the Rentals page and display the Rentals products.","Clicking the ""Rentals"" option successfully redirected the user to the Rentals page and displayed the Rentals products.",High,Pass
+11,Sort,Verify Sort drop down expand Functionality,"1. Open the website.
+2. Click on Sort Drop down
+","Sort drop down should Expand and display options (Default,
+Name (A -Z),
+Name (Z - A),
+Price (High - Low),
+Price (Low - High)","The sort drop down expanded and displayed the options: Name (A-Z), Name (Z-A), Price (High-Low), Price (Low-High). The ""Default"" option is missing (displayed as empty).",Medium,Fail
+12,Sort,"Verify Sort Drop Down Collapse Functionality	","1. Open the website.
+2. Click on the Sort drop-down to expand it.
+3. Click on the sort drop down to collapse it ",The sort drop-down should collapse and hide all sort options.,The sort drop-down successfully collapsed and the sort options were hidden.,High,Pass
+13,Sort,Verify Default Option Click Functionality,"1. Open the website.
+2. Click on Sort Drop down
+3. Click on Default options","Clicking the ""Default"" option should sort the products to the default order and display the default sorted products.","Clicking the ""Default"" option sorted the products to the default order and displayed the default sorted products.",,
+14,Sort,"Verify ""Name (A - Z)"" Option Click Functionality","1. Open the website.
+2. Click on Sort Drop down
+3. Click on ""Name (A - Z)""","Clicking the ""Name (A - Z)"" option should sort products in alphabetical ascending order (A?Z) and display them accordingly. Additionally, the sort drop-down button should display ""Name (A - Z)"".","Products are sorted in A?Z order and the drop-down button displays ""Default"".",High,Pass
+15,Sort,"Verify ""Name (Z - A)"" Option Click Functionality","1. Open the website.
+2. Click on Sort Drop down
+3. Click on ""Name (Z - A)""","Clicking the ""Name (Z - A)"" option should sort products in alphabetical descending order (Z?A) and display them accordingly. Additionally, the sort drop-down button should display ""Name (Z - A)"".	","Products are sorted in Z?A order and the drop-down button displays ""Name (Z - A)"".",High,Pass
+16,Sort,"Verify ""Price (High - Low)"" Option Click Functionality","1. Open the website.
+2. Click on Sort Drop down
+3. Click on ""Price (High - Low)""","Clicking the ""Price (High - Low)"" option should sort products by price from highest to lowest and display them accordingly. Additionally, the sort drop-down button should display ""Price (High - Low)"".","Products are sorted from highest to lowest price and the drop-down button displays ""Price (High - Low)"".	",High,Pass
+17,Sort,"Verify ""Price (Low - High)"" Option Click Functionality","1. Open the website.
+2. Click on Sort Drop down
+3. Click on ""Price (High - Low)""","Clicking the ""Price (Low - High)"" option should sort products by price from lowest to highest and display them accordingly. Additionally, the sort drop-down button should display ""Price (Low - High)"".","Products are sorted from lowest to highest price and the drop-down button displays ""Price (Low - High)"".",High,Pass
+18,Price Range,"Verify Price Range Slider Functionality	","1. Open the website.
+2. Adjust the Price Range slider to set a new price range.",The slider should update the displayed price range and filter products according to the selected range.,The slider changed the price range and updated the displayed products accordingly.,High,Pass
+19,Search,Verify Search Button Functionality with Valid Input ,"1. Open the website.
+2. Enter a valid query ""Hammer"" in the search bar.
+3. Click the search button.",The search button should trigger a search and display results matching the query.,The search button trigger a search and display results matching the query.,High,Pass
+20,Search,Verify Search Button Functionality with Empty Input,"1. Open the website.
+2. Leave the search bar empty.
+3. Click the search button.","After click on Serah button, nothing should happen","After click on Serah button, nothing happen",High,Pass
+21,Search,Verify Search bar with Special Characters,"1. Open the website.
+2. Enter a Special Characters ""@@@"" in the search bar.
+3. Click the search button.","The search bar should not accept special characters and should display an error message such as ""Invalid search input.""","The search bar accepted ""@@@"" and performed a search",High,Fail
+22,Search,Verify Cancel (X) Button Functionality,"1. Open the website.
+2. Enter text in the search bar.
+3. Click the cancel (X) button.",Clicking the cancel (X) button should clear the search bar.,Clicking the cancel (X) button  clear the search bar.,High,Pass
+23,Search,Verify Search Bar Accepts Any Number of Characters,"1. Open the website.
+2. Enter a search query with fewer than three characters in the search bar.
+3. Click the search button.","The search bar should perform a search and display results for queries of any length (1, 2, or more characters).",The search bar does not process queries with less than 3 characters.,High,Fail
+24,By brand,"Verify Checkbox for ""Forge Flex Tools"" Filter","1. Open the website.
+2. Click on the checkbox for ""Forge Flex Tools"" under the By Brand filter.","The product listing should display products for ""Forge Flex Tools"".",No products are displayed.,Medium,Fail
+25,,,,,,,
+26,,,,,,,
+27,,,,,,,
+28,,,,,,,
