@@ -1,0 +1,38 @@
+Title,Priority,Actual Result,Expected Result,Test Steps
+Retrieve non-existent user returns 404 but test expects 200,Medium,404 Not Found,Test should expect 404 Not Found for invalid user ID,"1. Send GET request to /api/users/41
+
+2. Observe status code
+
+3. Validate it returns 404 and not 200"
+Create user with empty body returns 201,High,201 Created,400 Bad Request or validation error,"1. Send POST request to /api/users with an empty JSON body
+
+2. Observe the response code and body
+
+3. Ensure proper validation is in place to reject the request
+"
+Basic Auth fails with 401,High,401 Unauthorized,200 OK if credentials are valid,"1. Send GET request to /basic-auth
+
+2. Provide username = test, password = 1
+
+3. Observe if it returns 401 or allows access"
+Login with incorrect password returns 200,High,200 OK,401 Unauthorized or 400 Bad Request,"1. Send POST request to /api/login with a valid email and wrong password
+
+2. Observe the status code and error message
+
+3. Confirm that login fails and returns correct status"
+"Unknown resource by ID returns 404, test expects 200",Low,404 Not Found,Test should expect 404 for non-existent resources,"1. Send GET request to /api/unknown/510
+
+2. Observe the status code
+
+3. Update test case to match actual API behavior"
+Protected resource returns 201 instead of 403,High,201 Created,403 Forbidden (because token is invalid or expired),"1. Send POST request to /api/protected-resource?role=user
+
+2. Include invalid bearer token QpwL in headers
+
+3. Observe response ? it should be 403, indicating access is denied due to bad token"
+,,,,
+Delete account returns 401 Unauthorized,High,401 Unauthorized,200 OK if token and credentials are correct,"1. Send DELETE request to /delete-account
+
+2. Include form data (email, password) and token
+
+3. Observe if the response indicates successful deletion"

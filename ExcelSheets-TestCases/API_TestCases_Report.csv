@@ -1,0 +1,14 @@
+Title,Body,Expected Result,Actual Result,Priority,Execution Status,Input Data
+Retrieve user by ID = 1,Fetch data for existing user with ID 1,"200 OK, valid user data, < 500ms","200 OK, 366ms",High,Passed,GET /api/users/1
+Retrieve user by ID = 41,Try to fetch a non-existent user,404 Not Found or empty body,"404 Not Found, 200ms",Medium,Failed,GET /api/users/41
+Create user with valid data,Create user using name and job,"201 Created, user info returned","201 Created, 196ms",High,Passed,"{""name"": ""Mustafa"", ""job"": ""leader""}"
+Create user with empty body,Send POST with no data,400 Bad Request or validation error,201 Created,High,Failed,{}
+Basic Auth with valid credentials,Access using basic auth,200 OK,401 Unauthorized,High,Failed,"Auth: Basic (username: test, password: 1)"
+Login with valid credentials,Log in with correct credentials,"200 OK, token returned","200 OK, 157ms",High,Passed,"{""email"": ""eve.holt@reqres.in"", ""password"": ""cityslicka""}"
+Login with wrong password,Try login with wrong password,400 or 401 error,200 OK (unexpected),High,Failed,"{""email"": ""eve.holt@reqres.in"", ""password"": ""wrongpassword""}"
+Login with form-data,Login using x-www-form-urlencoded,200 OK (if credentials are valid),"200 OK, 161ms",Medium,Passed,"email: eve.holt@reqres.in, password: 555888"
+Get unknown resource by ID 510,Access non-existent resource,404 Not Found,404 Not Found,Low,Failed,GET /api/unknown/510
+Get all unknown resources,Fetch unknown resources list,200 OK with list,"200 OK, 211ms",Medium,Passed,GET /api/unknown
+Access protected resource,Use bearer token to access resource,200 OK,201 Created,High,Failed,"Token: QpwL, POST /api/protected-resource?role=user"
+Update user profile,PATCH profile with form data and token,200 OK,401 Unauthorized,High,Failed,"name: Moustafa F. Shaheenqq, phone: 01155284100, company: Depi11, Token: {{Token}}"
+Delete user account,DELETE request with credentials and token,200 OK,401 Unauthorized,High,Failed,"email: m.shaheen12011@gmail.com, password: 01155284100, Token: {{Token}}"
